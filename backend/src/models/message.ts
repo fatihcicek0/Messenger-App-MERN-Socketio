@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import IMessage from "../interfaces/message";
 
 const MessageSchema = new mongoose.Schema(
   {
@@ -15,4 +16,4 @@ const MessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Message", MessageSchema);
+module.exports = mongoose.model<IMessage>("Message", MessageSchema);

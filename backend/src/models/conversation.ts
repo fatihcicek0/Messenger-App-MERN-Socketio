@@ -1,4 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from"mongoose";
+import IConversation from "../interfaces/conversation";
+
 
 const ConversationSchema = new mongoose.Schema(
   {
@@ -9,4 +11,4 @@ const ConversationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Conversation", ConversationSchema);
+module.exports = mongoose.model<IConversation>("Conversation", ConversationSchema);
