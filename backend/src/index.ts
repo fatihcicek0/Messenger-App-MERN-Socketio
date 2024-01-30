@@ -1,11 +1,19 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
-
-const app=express();
+import mongoose from 'mongoose';
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+require('dotenv').config();
 
-app.listen(3000,()=>{
-    console.log("listenin on localhost:3000 :) ")
-})
+
+
+let mongoUrl: any = process.env.MONGO_CONNECT_URL;
+mongoose.connect(mongoUrl)
+    .then(() => {
+        app.listen(3000, () => {
+            console.log("listenin on localhost:3000 :) ")
+        })
+
+    }).catch(err => { console.log(err) });
+
