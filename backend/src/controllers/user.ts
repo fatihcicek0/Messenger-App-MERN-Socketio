@@ -35,5 +35,5 @@ const Login = async (req: Request, res: Response) => {
         res.status(500).json(err)
     }
 }
-
+export default { Register, Login }
 

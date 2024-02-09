@@ -33,3 +33,4 @@ const getConversation = async (req: Request, res: Response) => {
         res.status(500).json(err);
     }
 }
+export default { newConversation, getConversation, getConversations }
