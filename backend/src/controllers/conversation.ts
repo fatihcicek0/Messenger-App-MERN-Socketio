@@ -13,7 +13,7 @@ const newConversation = async (req: Request, res: Response) => {
         res.status(500).json(err);
     }
 }
-const getConversations = async (req: Request, res: Response) => {
+const getConversationByUserId = async (req: Request, res: Response) => {
     try {
         const conversation = await Conversation.find({
             members: { $in: [req.params.userId] },
@@ -33,4 +33,4 @@ const getConversation = async (req: Request, res: Response) => {
         res.status(500).json(err);
     }
 }
-export default { newConversation, getConversation, getConversations }
+export default { newConversation, getConversationByUserId, getConversation }

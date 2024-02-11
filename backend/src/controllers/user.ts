@@ -1,39 +1,20 @@
-import User from '../models/user';
-import bcrypt from 'bcrypt';
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
+import User from "../models/user";
 
-const Register = async (req: Request, res: Response) => {
+
+//get a user
+const getUser = async (req: Request, res: Response) => {
+    const userId = req.query.userId;
+    const username = req.query.username;
     try {
-        //generate new password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-        //create new user
-        const newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: hashedPassword,
-        });
-
-        //save user and respond
-        const user = await newUser.save();
+        const user = userId
+            ? await User.findById(userId)
+            : await User.findOne({ username: username });
+        //  user != null && (const { password, updatedAt, ...other } = user?._doc)
         res.status(200).json(user);
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
-}
-const Login = async (req: Request, res: Response) => {
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (user) res.status(404).json("user not found");
-        let validPassword;
-        user != null && (validPassword = await bcrypt.compare(req.body.password, user.password))
-        if (validPassword) res.status(400).json("wrong password")
+};
 
-        res.status(200).json(user)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-}
-export default { Register, Login }
-
+export default { getUser }
