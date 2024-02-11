@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../utils/api";
 
@@ -8,14 +7,12 @@ export const useAuth = () => {
     return useContext(AuthContext);
 }
 
-interface state {
-    isAuthenticated: boolean
-}
+
 
 
 export const AuthProvider = ({ children }: { children: any }) => {
     const session = localStorage.getItem("user");
-    const [isAuthenticated, setisAuthenticated] = useState(session ? true :false);
+    const [isAuthenticated, setisAuthenticated] = useState(session ? true : false);
     const [user, setUser] = useState(session ? JSON.parse(session) : null);
 
 

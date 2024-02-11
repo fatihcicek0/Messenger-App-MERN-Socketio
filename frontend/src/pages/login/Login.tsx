@@ -12,6 +12,7 @@ export default function Login() {
     const handleClick = (e: any) => {
         e.preventDefault();
         login({ email: email.current?.value, password: password.current?.value });
+        navigate('/');
     };
 
     return (

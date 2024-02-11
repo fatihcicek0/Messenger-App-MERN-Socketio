@@ -7,16 +7,14 @@ import Register from './pages/register/Register'
 
 function App() {
   const { isAuthenticated }: any = useAuth();
-  console.log(isAuthenticated)
+  console.log(isAuthenticated);
   return (
     <div className="App">
-      <AuthProvider>
         <Routes>
           <Route path='/' element={isAuthenticated ? <Home /> : <Login />} > </Route>
           <Route path='/login' element={isAuthenticated ? <Home /> : <Login />}></Route>
           <Route path='/register' element={isAuthenticated ? <Home /> : <Register />}></Route>
         </Routes>
-      </AuthProvider>
     </div>
   )
 }

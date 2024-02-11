@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef } from "react";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
+import api from "../../utils/api";
 
 export default function Register() {
 
@@ -22,7 +23,7 @@ export default function Register() {
                 password: password.current?.value,
             };
             try {
-                await axios.post("/auth/register", user);
+                await api().post('/auth/register', user);
                 navigate("/login");
             } catch (err) {
                 console.log(err);
@@ -34,9 +35,9 @@ export default function Register() {
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
-                    <h3 className="loginLogo">Lamasocial</h3>
+                    <h3 className="loginLogo">Message io</h3>
                     <span className="loginDesc">
-                        Connect with friends and the world around you on Lamasocial.
+                        Connect with friends and the world around you on Message io.
                     </span>
                 </div>
                 <div className="loginRight">
