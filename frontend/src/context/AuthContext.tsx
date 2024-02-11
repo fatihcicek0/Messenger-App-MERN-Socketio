@@ -14,9 +14,8 @@ interface state {
 
 
 export const AuthProvider = ({ children }: { children: any }) => {
-    const [isAuthenticated, setisAuthenticated] = useState(false);
-    
     const session = localStorage.getItem("user");
+    const [isAuthenticated, setisAuthenticated] = useState(session ? true :false);
     const [user, setUser] = useState(session ? JSON.parse(session) : null);
 
 
@@ -29,12 +28,10 @@ export const AuthProvider = ({ children }: { children: any }) => {
             const response: string = await api().post('/auth/login', data);
             await localStorage.setItem("user", JSON.stringify(response))
             await setisAuthenticated(true);
-
-
         } catch (err) {
             console.log(err);
         }
     }
 
-    return < AuthContext.Provider value={{ isAuthenticated, login,user }} > {children} </ AuthContext.Provider>
+    return < AuthContext.Provider value={{ isAuthenticated, login, user }} > {children} </ AuthContext.Provider>
 }
