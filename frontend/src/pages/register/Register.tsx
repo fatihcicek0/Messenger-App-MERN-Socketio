@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useRef } from "react";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +5,7 @@ import api from "../../utils/api";
 
 export default function Register() {
 
-    const username = useRef<HTMLInputElement | null>(null);
+    const userName = useRef<HTMLInputElement | null>(null);
     const email = useRef<HTMLInputElement | null>(null);
     const password = useRef<HTMLInputElement | null>(null);
     const passwordAgain = useRef<HTMLInputElement | null>(null);
@@ -18,7 +17,7 @@ export default function Register() {
             passwordAgain.current?.setCustomValidity("Passwords don't match!");
         } else {
             const user = {
-                username: username.current?.value,
+                userName: userName.current?.value,
                 email: email.current?.value,
                 password: password.current?.value,
             };
@@ -45,7 +44,7 @@ export default function Register() {
                         <input
                             placeholder="Username"
                             required
-                            ref={username}
+                            ref={userName}
                             className="loginInput"
                         />
                         <input

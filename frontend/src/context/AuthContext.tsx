@@ -22,8 +22,9 @@ export const AuthProvider = ({ children }: { children: any }) => {
     }
     const login = async (data: data) => {
         try {
-            const response: string = await api().post('/auth/login', data);
-            await localStorage.setItem("user", JSON.stringify(response))
+            const response:{data:string}= await api().post('/auth/login', data);
+            const userData=response.data;
+            await localStorage.setItem("user", JSON.stringify(userData));
             await setisAuthenticated(true);
         } catch (err) {
             console.log(err);
