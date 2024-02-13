@@ -14,6 +14,7 @@ const newConversation = async (req: Request, res: Response) => {
     }
 }
 const getConversationByUserId = async (req: Request, res: Response) => {
+    
     try {
         const conversation = await Conversation.find({
             members: { $in: [req.params.userId] },

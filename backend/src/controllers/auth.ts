@@ -10,7 +10,7 @@ const Register = async (req: Request, res: Response) => {
 
         //create new user
         const newUser = new User({
-            username: req.body.username,
+            userName: req.body.userName,
             email: req.body.email,
             password: hashedPassword,
         });
@@ -19,11 +19,11 @@ const Register = async (req: Request, res: Response) => {
         const user = await newUser.save();
         res.status(200).json(user);
     } catch (err) {
+        console.log(err);
         res.status(500).json(err)
     }
 }
 const Login = async (req: Request, res: Response) => {
-    console.log("istek")
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) return res.status(404).json("user not found");

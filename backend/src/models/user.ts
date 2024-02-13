@@ -3,7 +3,7 @@ import IUser from "../interfaces/user";
 
 const UserSchema = new mongoose.Schema(
   {
-    username: {
+    userName: {
       type: String,
       require: true,
       min: 3,

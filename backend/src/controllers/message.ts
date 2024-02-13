@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Message from "../models/message";
 
 const addMessage = async (req: Request, res: Response) => {
+    console.log("istek");
     const newMessage = new Message(req.body);
 
     try {
