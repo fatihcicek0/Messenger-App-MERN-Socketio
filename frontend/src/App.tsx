@@ -6,7 +6,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import Register from './pages/register/Register'
 
 function App() {
-  const { isAuthenticated }: any = useAuth();
+  const { isAuthenticated ,user}: any = useAuth();
   console.log(isAuthenticated);
   return (
     <div className="App">

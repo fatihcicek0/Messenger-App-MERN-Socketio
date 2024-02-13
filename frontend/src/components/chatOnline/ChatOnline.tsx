@@ -1,5 +1,15 @@
+import { useEffect } from 'react'
 import './chatOnline.css'
-export default function ChatOnline() {
+
+interface IProps {
+    currentId: string,
+    onlineUsers: [{ userId: string }]
+}
+
+export default function ChatOnline({ onlineUsers, currentId }: IProps) {
+    useEffect(() => {
+        console.log(onlineUsers);
+    }, [])
     return (
         <div className="chatOnline">
             <div className="chatOnlineFriend">

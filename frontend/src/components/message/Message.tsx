@@ -4,7 +4,7 @@ interface Iprops{
     own?: boolean,
     message:{
         text:string,
-        createdAt:string
+        createdAt:number
     } 
 }
 export default function Message({ own,message }: Iprops) {
